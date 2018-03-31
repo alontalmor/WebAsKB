@@ -69,7 +69,8 @@ Now you can do any of the following:
 Options: ‘—eval_set dev’ or ‘—eval_set test’ to choose evaluation set.
 
 Please note, Reading Comprehension answer predication data is provided in Data/RC_answer_cache. However the WebAnswer model was not included 
-due to very large repository size. You may replace the RC component with any other RC model to be used on the web-snippets in [ComplexWebQuestions](http://nlp.cs.tau.ac.il/compwebq)
+due to very large repository size. 
+You may replace the RC component with any other RC model to be used with the web-snippets in [ComplexWebQuestions](http://nlp.cs.tau.ac.il/compwebq)
 .
 
 
