@@ -6,31 +6,35 @@ If you need pointers on setting up a python 3.6 environment, see below.
 
 ### Setting up a virtual environment
 
+1.  First, clone the repo:
 
-1.  Create a virtual environment with Python 3.6
+    ```
+    git clone https://github.com/alontalmor/webaskb.git
+    ```
+
+2.  Change your directory to where you cloned the files:
+
+   ```
+   cd webaskb
+   ```
+
+3.  Create a virtual environment with Python 3.6
 
     ```
     virtualenv -p python3 venv
     ```
 
-3.  Activate the virtual environment. You will need to activate the venv environment in each terminal in which you want to use WebAsKB.
+4.  Activate the virtual environment. You will need to activate the venv environment in each terminal in which you want to use WebAsKB.
 
     ```
     source venv/bin/activate
     ```
-
-### Installing via pip
-
-1.  Install AllenNLP.
+5.  Install the required dependencies.
 
     ```
-    pip install allennlp
+    pip3 install -r requirements.txt
     ```
-
-2. Visit http://pytorch.org/ and install the PyTorch 0.3.1 package for your system.
-
-That's it! You're now ready to build and train AllenNLP models.
-AllenNLP installs a script when you install the python package, meaning you can run allennlp commands just by typing `allennlp` into a terminal.
+6.  Install pytorch 0.3.1 from their [website](http://pytorch.org/)
 
 
 ## Installing using Docker
