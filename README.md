@@ -1,4 +1,4 @@
-## Document QA
+## WebAsKB
 This repo contains code for our paper [Simple and Effective Multi-Paragraph Reading Comprehension](https://arxiv.org/abs/1710.10723).
 It can be used to  train neural question answering models in tensorflow, 
 and in particular for the case when we want to run the model over multiple paragraphs for 
@@ -12,7 +12,7 @@ we anticipate porting this work in [allennlp](https://github.com/allenai/allennl
 enjoy a cleaner implementation and more stable support.
 
 
-## Installing WebAsKB
+## Setup
 
 ### Setting up a virtual environment
 
