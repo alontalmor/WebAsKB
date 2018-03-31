@@ -65,6 +65,7 @@ Now you can do any of the following:
 * Run pointer-net to generate split-points `python -m run_ptrnet.py gen_noisy_sup`.
 * Train the pointer network `python -m webaskb_run.py train_ptrnet`.
 * Run final predication and calculate p@1 scores `python -m webaskb_run.py splitqa`. 
+
 (please add option ‘—eval_set dev’ or ‘—eval_set test’ to choose evaluation set)
 
 Please note, Reading Comprehension answer predication data is provided in Data/RC_answer_cache. However the WebAnswer model was not included 
