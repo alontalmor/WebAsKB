@@ -1,15 +1,8 @@
 ## WebAsKB
-This repo contains code for our paper [Simple and Effective Multi-Paragraph Reading Comprehension](https://arxiv.org/abs/1710.10723).
-It can be used to  train neural question answering models in tensorflow, 
+This repo contains code for our paper [The Web as a Knowledge-base for Answering Complex Questions](https://arxiv.org/abs/1803.06643).
+It can be used to train neural question split point models in PyTroch, 
 and in particular for the case when we want to run the model over multiple paragraphs for 
-each question. Code is included to train on the [TriviaQA](http://nlp.cs.washington.edu/triviaqa/) 
-and [SQuAD](https://rajpurkar.github.io/SQuAD-explorer/) datasets.
-
-A demo of this work can be found at [documentqa.allenai.org](https://documentqa.allenai.org)
-
-Small forewarning, this is still much more of a research codebase then a library.
-we anticipate porting this work in [allennlp](https://github.com/allenai/allennlp) where it will 
-enjoy a cleaner implementation and more stable support.
+each question. Code is included to train on the [ComplexWebQuestions](http://nlp.cs.tau.ac.il/compwebq) datasets.
 
 
 ## Setup
