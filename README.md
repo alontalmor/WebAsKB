@@ -1,30 +1,22 @@
 
 ## Running WebAsKB
 
-The preferred way to install AllenNLP is via `pip`.
-
-tldr; Just run `git clone allennlp` in your python 3.6 environment, install pytorch 0.3.1 from their [website](http://pytorch.org/), and you're good to go!
+tldr; Just run `git clone https://github.com/alontalmor/webaskb.git` in your python 3.6 environment, install pytorch 0.3.1 from their [website](http://pytorch.org/), and you're good to go!
 If you need pointers on setting up a python 3.6 environment, see below.
 
 ### Setting up a virtual environment
 
-[Conda](https://conda.io/) can be used set up a virtual environment
-with the version of Python required for AllenNLP and in which you can
-sandbox its dependencies. If you already have a python 3.6 environment 
-you want to use, you can skip to the 'installing via pip' section.
 
-1.  [Download and install Conda](https://conda.io/docs/download.html).
-
-2.  Create a Conda environment with Python 3.6
+1.  Create a virtual environment with Python 3.6
 
     ```
-    conda create -n allennlp python=3.6
+    virtualenv -p python3 venv
     ```
 
-3.  Activate the Conda environment. You will need to activate the Conda environment in each terminal in which you want to use AllenNLP.
+3.  Activate the virtual environment. You will need to activate the venv environment in each terminal in which you want to use WebAsKB.
 
     ```
-    source activate allennlp
+    source venv/bin/activate
     ```
 
 ### Installing via pip
