@@ -66,10 +66,11 @@ Now you can do any of the following:
 * Train the pointer network `python -m webaskb_run.py train_ptrnet`.
 * Run final predication and calculate p@1 scores `python -m webaskb_run.py splitqa`. 
 
-(please add option ‘—eval_set dev’ or ‘—eval_set test’ to choose evaluation set)
+Options: ‘—eval_set dev’ or ‘—eval_set test’ to choose evaluation set.
 
 Please note, Reading Comprehension answer predication data is provided in Data/RC_answer_cache. However the WebAnswer model was not included 
-due to very large repository size. You may replace the RC component with any other such model.
+due to very large repository size. You may replace the RC component with any other RC model to be used on the web-snippets in [ComplexWebQuestions](http://nlp.cs.tau.ac.il/compwebq)
+.
 
 
 
