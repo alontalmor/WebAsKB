@@ -61,12 +61,13 @@ can be downloaded from [ComplexWebQuestions](http://nlp.cs.tau.ac.il/compwebq)
 
 Now you can do any of the following:
 
-* Generate the noisy supervision data for training `python -m webaskb_run.py gen_noisy_sup --eval_set dev` (choose ‘dev’ or ‘test’ sets).
-* Run pointer-net to generate split-points `python -m run_ptrnet.py gen_noisy_sup --eval_set dev` (choose ‘dev’ or ‘test’ sets).
+* Generate the noisy supervision data for training `python -m webaskb_run.py gen_noisy_sup`.
+* Run pointer-net to generate split-points `python -m run_ptrnet.py gen_noisy_sup`.
 * Train the pointer network `python -m webaskb_run.py train_ptrnet`.
-* Run final predication and calculate p@1 scores `python -m webaskb_run.py splitqa --eval_set dev`. 
+* Run final predication and calculate p@1 scores `python -m webaskb_run.py splitqa`. 
+(please add option ‘—eval_set dev’ or ‘—eval_set test’ to choose evaluation set)
 
-Please note, Reading Comprehension component answer predication we provided in RC_answer_cache. However the WebAnswer model was not included 
+Please note, Reading Comprehension answer predication data is provided in Data/RC_answer_cache. However the WebAnswer model was not included 
 due to very large repository size. You may replace the RC component with any other such model.
 
 
