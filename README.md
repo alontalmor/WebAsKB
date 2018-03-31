@@ -41,12 +41,19 @@ each question. Code is included to train on the [ComplexWebQuestions](http://nlp
 
 7.  Download the data
 
+    ```
+    wget http://nlp.stanford.edu/data/data.zip
+    unzip data.zip
+    ```
+
 
 
 ### Data
 
 By default, we expect source data and preprocessed data to be stored in "data" directory.
 The expected file locations can be changed by altering config.py.
+Note - the dataset downloaded here contains only the question-answer part, the full dataset (including web snippets) 
+can be downloaded from [ComplexWebQuestions](http://nlp.cs.tau.ac.il/compwebq)
 
 
 
@@ -54,8 +61,13 @@ The expected file locations can be changed by altering config.py.
 
 Now you can do any of the following:
 
-* Run a model on example sentences with `python -m allennlp.run predict`.
-* Start a web service to host our models with `python -m allennlp.run serve`.
-* Interactively code against AllenNLP from the Python interpreter with `python`.
+* Generate the noisy supervision data for training `python -m webaskb_run.py gen_noisy_sup --eval_set dev` (choose ‘dev’ or ‘test’ sets).
+* Run pointer-net to generate split-points `python -m run_ptrnet.py gen_noisy_sup --eval_set dev` (choose ‘dev’ or ‘test’ sets).
+* Train the pointer network `python -m webaskb_run.py train_ptrnet`.
+* Run final predication and calculate p@1 scores `python -m webaskb_run.py splitqa --eval_set dev`. 
+
+Please note, Reading Comprehension component answer predication we provided in RC_answer_cache. However the WebAnswer model was not included 
+due to very large repository size. You may replace the RC component with any other such model.
+
 
 
