@@ -1,9 +1,6 @@
 
 ## Running WebAsKB
 
-tldr; Just run `git clone https://github.com/alontalmor/webaskb.git` in your python 3.6 environment, install pytorch 0.3.1 from their [website](http://pytorch.org/), and you're good to go!
-If you need pointers on setting up a python 3.6 environment, see below.
-
 ### Setting up a virtual environment
 
 1.  First, clone the repo:
@@ -14,9 +11,9 @@ If you need pointers on setting up a python 3.6 environment, see below.
 
 2.  Change your directory to where you cloned the files:
 
-   ```
-   cd webaskb
-   ```
+    ```
+    cd webaskb
+    ```
 
 3.  Create a virtual environment with Python 3.6
 
@@ -37,10 +34,7 @@ If you need pointers on setting up a python 3.6 environment, see below.
 6.  Install pytorch 0.3.1 from their [website](http://pytorch.org/)
 
 
-## Installing using Docker
-
-Once you have [installed Docker](https://docs.docker.com/engine/installation/)
-just run `docker run -it -p 8000:8000 --rm allennlp/allennlp:v0.4.0` to get an environment that will run on either the cpu or gpu.
+## Running 
 
 Now you can do any of the following:
 
@@ -48,11 +42,8 @@ Now you can do any of the following:
 * Start a web service to host our models with `python -m allennlp.run serve`.
 * Interactively code against AllenNLP from the Python interpreter with `python`.
 
-Using Docker installs AllenNLP from source, for development. Consequently, the `allennlp` commandline tool is not
-installed and you will have to use the correpsonding python commands (see above).
 
-
-## What is AllenNLP?
+## What is WebAsKB?
 
 Built on PyTorch, AllenNLP makes it easy to design and evaluate new deep
 learning models for nearly any NLP problem, along with the infrastructure to
@@ -112,85 +103,5 @@ state of the art models with high quality engineering.
 </tr>
 </table>
 
-### Setting up a development environment
-
-If you want to make changes to AllenNLP library itself
-(or use bleeding-edge code that hasn't been released to PyPI)
-you'll need to install the library from GitHub and manually install the requirements:
-
-1. First, clone the repo:
-
-```
-git clone https://github.com/allenai/allennlp.git
-```
-
-2. Change your directory to where you cloned the files:
-
-```
-cd allennlp
-```
-
-3.  Install the required dependencies.
-
-    ```
-    INSTALL_TEST_REQUIREMENTS="true" ./scripts/install_requirements.sh
-    ```
-
-4. Visit http://pytorch.org/ and install the relevant pytorch package.
-
-You should now be able to test your installation with `./scripts/verify.py`.  Congratulations!
-
-### Setting up a Docker development environment
-
-A third option is to run AllenNLP via Docker.
-Docker provides a virtual machine with everything set up to run AllenNLP--
-whether you will leverage a GPU or just run on a CPU.
-Docker provides more isolation and consistency,
-and also makes it easy to distribute your environment
-to a compute cluster.
-
-#### Downloading a pre-built Docker image
-
-It is easy to run a pre-built Docker development environment.
-AllenNLP is configured with Docker Cloud to build a
-new image on every update to the master branch.  To download
-the latest released from [Docker Hub](https://hub.docker.com/r/allennlp/) just run:
-
-```bash
-docker pull allennlp/allennlp:v0.4.0
-```
-
-#### Building a Docker image
-
-For various reasons you may need to create your own AllenNLP Docker image.
-The same image can be used either with a CPU or a GPU.
-
-First, follow the instructions above for setting up a development environment.
-Then run the following command
-(it will take some time, as it completely builds the
-environment needed to run AllenNLP.)
-
-```bash
-docker build --tag allennlp/allennlp .
-```
-
-You should now be able to see this image listed by running `docker images allennlp`.
-
-```
-REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
-allennlp/allennlp            latest              b66aee6cb593        5 minutes ago       2.38GB
-```
-
-#### Running the Docker image
-
-You can run the image with `docker run --rm -it allennlp/allennlp`.  The `--rm` flag cleans up the image on exit and the
-`-it` flags make the session interactive so you can use the bash shell the Docker image starts.
-
-You can test your installation by running  `./scripts/verify.py`.
 
 
-## Team
-
-AllenNLP is an open-source project backed by [the Allen Institute for Artificial Intelligence (AI2)](http://www.allenai.org).
-AI2 is a non-profit institute with the mission to contribute to humanity through high-impact AI research and engineering.
-To learn more about who specifically contributed to this codebase, see [our contributors](https://github.com/allenai/allennlp/graphs/contributors) page.
