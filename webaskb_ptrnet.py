@@ -19,7 +19,7 @@ class WebAsKB_PtrNet():
         self.embed.load_vocabulary_word_vectors(config.glove_50d,'glove.6B.50d.txt',50)
 
     # Load Data
-    def prepareData(self, filename, input_lang=None):
+    def prepareData(self, filename, is_training_set, input_lang=None):
         if input_lang is None:
             input_lang = Lang('input')
 
@@ -32,6 +32,10 @@ class WebAsKB_PtrNet():
         input_lang.addWord('None')
         pairs = []
         for question in split_dataset:
+            # training is done using only composition and conjunction examples
+            if is_training_set and question['comp'] != 'composition' and question['comp'] != 'conjunction':
+                continue
+
             x = [['None', 'None'], ['composition', 'None'], ['conjunction', 'None']]
             y = []
             aux_data = question
@@ -81,8 +85,9 @@ class WebAsKB_PtrNet():
 
     def load_data(self):
         # we always read the training data - to create the language index in the same order.
-        self.input_lang, self.pairs_train = self.prepareData(config.noisy_supervision_dir + 'train.json')
-        self.input_lang, self.pairs_dev = self.prepareData(config.noisy_supervision_dir + config.EVALUATION_SET + '.json', self.input_lang)
+        self.input_lang, self.pairs_train = self.prepareData(config.noisy_supervision_dir + 'train.json',is_training_set=True)
+        self.input_lang, self.pairs_dev = self.prepareData(config.noisy_supervision_dir + config.EVALUATION_SET + '.json', \
+                                                           is_training_set=False , input_lang=self.input_lang)
 
     def init(self):
         # define batch training scheme
@@ -96,7 +101,7 @@ class WebAsKB_PtrNet():
 
     def eval(self):
         model_output = self.net.evaluate()
-        with open(config.split_points_dir + config.EVALUATION_SET, 'w') as outfile:
+        with open(config.split_points_dir + config.EVALUATION_SET + '.json', 'w') as outfile:
             outfile.write(json.dumps(model_output))
 
 

@@ -6,7 +6,7 @@ import random
 import torch
 import torch.nn as nn
 from torch import optim
-import time
+import datetime
 import json
 
 # A general training and evaluation class for neural networks
@@ -23,7 +23,8 @@ class NNRun():
     def run_training(self):
         loss = 0
         self.max_testing_accuracy = 0
-        self.start = time.time()
+        self.start = datetime.datetime.now()
+
         self.train_loss = 0  # Reset every print_every
         self.stats = []
         # For early stopping
@@ -65,7 +66,7 @@ class NNRun():
                 loss = 0
 
             if self.iteration % config.print_every == 0:
-                print('--- iteration ' + str(self.iteration) +  ' run-time (min) ' + '{:.2}'.format((time.time() - self.start) / 60) +  ' --------')
+                print('--- iteration ' + str(self.iteration) +  ' run-time ' + str(datetime.datetime.now() - self.start) +  ' --------')
                 print('trainset loss %.4f' % (self.train_loss / config.print_every))
                 self.train_loss = 0
 
