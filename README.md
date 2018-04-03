@@ -69,7 +69,7 @@ can be downloaded from [ComplexWebQuestions](http://nlp.cs.tau.ac.il/compwebq)
 Now you can do any of the following:
 
 * Generate the noisy supervision data for training `python -m webaskb_run.py gen_noisy_sup`.
-* Run pointer-net to generate split-points `python -m run_ptrnet.py gen_noisy_sup`.
+* Run pointer-net to generate split-points `python -m webaskb_run.py run_ptrnet`.
 * Train the pointer network `python -m webaskb_run.py train_ptrnet`.
 * Run final predication and calculate p@1 scores `python -m webaskb_run.py splitqa`. 
 
