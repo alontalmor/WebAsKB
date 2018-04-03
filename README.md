@@ -30,7 +30,7 @@ each question. Code is included to train on the [ComplexWebQuestions](http://nlp
 4.  Activate the virtual environment. You will need to activate the venv environment in each terminal in which you want to use WebAsKB.
 
     ```
-    source venv/bin/activate
+    source venv/bin/activate (or source venv/bin/activate.csh)
     ```
 5.  Install the required dependencies.
 
@@ -39,11 +39,18 @@ each question. Code is included to train on the [ComplexWebQuestions](http://nlp
     ```
 6.  Install pytorch 0.3.1 from their [website](http://pytorch.org/)
 
+7.  Download external libraries
+
+    ```
+    wget https://www.dropbox.com/s/k867s25qitdo8bc/Lib.zip
+    unzip Lib.zip
+    ```
+
 7.  Download the data
 
     ```
-    wget http://nlp.stanford.edu/data/data.zip
-    unzip data.zip
+    wget https://www.dropbox.com/s/58uypxx8wkrlt0y/Data.zip
+    unzip Data.zip
     ```
 
 

@@ -93,12 +93,6 @@ class WebAsKB_PtrNet_Model():
 
         return accuracy
 
-    def append_training_stats(self):
-        self.stats.append({'iter':self.iteration,'train_loss':print_train_loss_avg,'test_loss':print_test_loss_avg \
-                     ,'accuracy':accuracy_avg ,'comp_accuracy':comp_accuracy_avg ,'p1_accuracy':p1_accuracy_avg \
-                         , 'p2_accuracy': p2_accuracy_avg, 'p1_1_right_accuracy': p1_1_right_accuracy_avg, \
-                      'p1_1_left_accuracy': p1_1_left_accuracy_avg})
-
     def print_stats(self, sample_size):
 
         comp_accuracy_avg = self.comp_accuracy / sample_size

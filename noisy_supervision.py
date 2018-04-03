@@ -232,22 +232,6 @@ class NoisySupervision():
                 split_part1 = question['rephrased_tokens'][0:question['p1']]
                 split_part2 = question['rephrased_tokens'][question['p1']:]
 
-                # removing stopwords from the split point proximity
-                ind = len(split_part1)
-                while ind > 0:
-                    ind -= 1
-                    if split_part1[ind] in ['and', 'that', 'which'] or split_part1[ind] in ['.', ',']:
-                        split_part1 = split_part1[0:-1]
-                    else:
-                        break
-
-                ind = 0
-                while ind < len(split_part2):
-                    if split_part2[ind] not in ['and', 'that', 'which'] or split_part2[ind] in ['.', ',']:
-                        break
-                    ind += 1
-                split_part2 = split_part2[ind:]
-
                 question['split_part1'] = ' '.join(split_part1)
                 question['split_part2'] = ' '.join(split_part2)
 
@@ -258,8 +242,8 @@ class NoisySupervision():
                     by='dependent').reset_index(drop=True)
                 if basicDep.iloc[0]['dep'] == "det":
                     question['split_part2'] = \
-                    basicDep.loc[basicDep['dependent'] == basicDep.iloc[0]['governor'], 'dependentGloss'].iloc[0] + ' ' + \
-                    question['split_part2']
+                        basicDep.loc[basicDep['dependent'] == basicDep.iloc[0]['governor'], 'dependentGloss'].iloc[0] + ' ' + \
+                        question['split_part2']
                     question['p2'] = int(
                         basicDep.loc[basicDep['dependent'] == basicDep.iloc[0]['governor'], 'dependentGloss'].index[0])
                 else:
