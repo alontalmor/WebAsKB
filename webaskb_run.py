@@ -23,6 +23,7 @@ elif args.operation == 'run_ptrnet':
 elif args.operation == 'train_ptrnet':
     config.PERFORM_TRAINING = True
     config.LOAD_SAVED_MODEL = False
+    config.max_evalset_size = 1000
     ptrnet = WebAsKB_PtrNet()
     ptrnet.load_data()
     ptrnet.init()

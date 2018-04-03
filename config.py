@@ -24,7 +24,7 @@ class Config:
         self.NUM_OF_SAMPLES = None
         self.TEST_TRAIN_SPLIT = 0.9
         self.print_every = 1000
-        self.evaluate_every = 5000
+        self.evaluate_every = 3000
         self.dropout_p = 0.25
         self.EMBEDDING_VEC_SIZE = 50
         self.MINI_BATCH_SIZE = 10
@@ -32,6 +32,9 @@ class Config:
         self.use_teacher_forcing = True
         self.teacher_forcing_full_until = 10000
         self.teacher_forcing_partial_until = 30000
+
+        # used to limit size of dev set when training
+        self.max_evalset_size = 4000
 
         # Number of training iteration with no substantial dev accuracy improvement to stop training ("early stopping")
         self.NO_IMPROVEMENT_ITERS_TO_STOP = 50000

@@ -83,7 +83,7 @@ class NNRun():
     def evaluate(self, gen_model_output=True):
         model_output = []
         pairs_dev = [self.pairs_dev[i] for i in range(len(self.pairs_dev))]
-        sample_size = len(self.pairs_dev)
+        sample_size = min(config.max_evalset_size, len(self.pairs_dev))
         self.model.init_stats()
 
         self.test_loss = 0
