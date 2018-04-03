@@ -63,7 +63,7 @@ class Config:
         self.data_dir = 'Data/'
         self.complexwebquestions_dir = self.data_dir + "complex_web_questions/"
         self.noisy_supervision_dir = self.data_dir + 'noisy_supervision/'
-        self.neural_model_dir = self.data_dir + "ptrnet_model_no_and/"
+        self.neural_model_dir = self.data_dir + "ptrnet_model/"
         self.split_points_dir = self.data_dir + "split_points/"
         self.rc_answer_cache_dir = self.data_dir + "rc_answer_cache/"
 
