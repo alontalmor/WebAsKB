@@ -1,5 +1,5 @@
 ## WebAsKB
-This repo contains code for our paper [The Web as a Knowledge-base for Answering Complex Questions](https://arxiv.org/abs/1803.06643).
+This repository contains code for our paper [The Web as a Knowledge-base for Answering Complex Questions](https://arxiv.org/abs/1803.06643).
 It can be used to train neural question split point models in PyTroch, 
 and in particular for the case when we want to run the model over multiple paragraphs for 
 each question. Code is included to train on the [ComplexWebQuestions](http://nlp.cs.tau.ac.il/compwebq) datasets.
