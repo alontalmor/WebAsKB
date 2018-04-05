@@ -4,6 +4,7 @@ import os
 import pandas as pd
 import json
 import unicodedata
+import torch
 
 import warnings
 warnings.simplefilter(action='ignore', category=UserWarning)
@@ -39,17 +40,17 @@ class Config:
         # Number of training iteration with no substantial dev accuracy improvement to stop training ("early stopping")
         self.NO_IMPROVEMENT_ITERS_TO_STOP = 50000
 
+        # manual seeding for run comparison
+        torch.manual_seed(0)
+
         self.SOS_token = 0
         self.EOS_token = 1
 
         # Neural Options
         self.use_cuda = False
         self.USE_GLOVE = True
-        self.WRITE_TO_TENSORBOARD = False
         self.LOAD_SAVED_MODEL = True
         self.PERFORM_TRAINING = False
-        self.GEN_RL_SAMPLES = False
-        self.PRINT_PROB = False
 
         # choose dev or test
         self.EVALUATION_SET = 'dev'
