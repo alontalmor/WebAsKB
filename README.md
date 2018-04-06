@@ -48,11 +48,16 @@ This model was trained on the dataset [ComplexWebQuestions](http://nlp.cs.tau.ac
 7.  Download the data:
 
     ```
-    wget https://www.dropbox.com/s/58uypxx8wkrlt0y/Data.zip
+    wget https://www.dropbox.com/s/tn45a3crehht7c1/Data.zip
     unzip Data.zip
     ```
+8.  Optional - install and run Stanford NLP server, to generate noisy supervision:
 
-
+    ```
+    wget http://nlp.stanford.edu/software/stanford-corenlp-full-2016-10-31.zip
+    cd stanford-corenlp-full-2016-10-31
+    java -mx4g -cp "*" edu.stanford.nlp.pipeline.StanfordCoreNLPServer -port 9000 -timeout 15000
+    ```
 
 ### Data
 

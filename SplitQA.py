@@ -6,11 +6,6 @@ from Executors.composition import Composition
 
 class SplitQA():
     def __init__(self):
-        file_name = 'model_output'
-        dataset_filename = '../mturk/compqgen/final/35000/WebComplexQuestions_35000_v2_dev'
-        run_name = file_name
-        BATCH_SIZE = 100
-
         self.Executors = [Composition(),Conjunction(),SimpleSearch()]
         webanswer_dict = {}
 
