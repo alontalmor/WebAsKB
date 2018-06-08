@@ -13,7 +13,7 @@ class SplitQA():
         # calculate split points
         with open(config.split_points_dir + config.EVALUATION_SET + '.json', 'r') as outfile:
             self.split_points = pd.DataFrame(json.load(outfile))
-        
+
         ## Appending data from original complexwebquestions
         with open(config.complexwebquestions_dir + 'ComplexWebQuestions_' + config.EVALUATION_SET + '.json', 'r') as outfile:
             complexwebquestions = pd.DataFrame(json.load(outfile))
@@ -72,6 +72,42 @@ class SplitQA():
         self.split_points.to_csv(results_path + '.csv',encoding="utf-8",index=False)
         with open(results_path + '.json', 'w') as outfile:
             json.dump(self.split_points.to_dict(orient="rows"), outfile)
+
+    def gen_predictions_file(self):
+
+        predictions = []
+        for ind, q in self.split_points.iterrows():
+            conjunction_rc_conf = -100
+            composition_rc_conf = -100
+            SimpQA_rc_conf = -100
+            if q['SplitQA_conjunction_rc_conf'] is not None and len(q['SplitQA_conjunction_rc_conf']) > 0:
+                conjunction_rc_conf = max(q['SplitQA_conjunction_rc_conf'])
+            if q['SplitQA_composition_rc_conf'] is not None and len(q['SplitQA_composition_rc_conf']) > 0:
+                composition_rc_conf = max(q['SplitQA_composition_rc_conf'])
+            if q['SimpQA_rc_conf'] is not None and len(q['SimpQA_rc_conf']) > 0:
+                SimpQA_rc_conf = max(q['SimpQA_rc_conf'])
+
+            conjunction_rc_conf += 1.0
+            composition_rc_conf += 2.0
+
+            try:
+                if q['comp'] == 'conjunction':
+                    if conjunction_rc_conf >= SimpQA_rc_conf:
+                        predictions.append({'ID':q['ID'],'answer':q['SplitQA_conjunction_spans'][0]})
+                    else:
+                        predictions.append({'ID': q['ID'], 'answer': q['SimpQA_spans'][0]})
+                else:
+                    if composition_rc_conf >= SimpQA_rc_conf:
+                        predictions.append({'ID': q['ID'], 'answer': q['SplitQA_composition_spans'][0]})
+                    else:
+                        predictions.append({'ID': q['ID'], 'answer': q['SimpQA_spans'][0]})
+            except:
+                predictions.append({'ID': q['ID'], 'answer': ''})
+
+        results_path = config.data_dir + 'predictions_' + config.EVALUATION_SET
+        print('saving predictions file ' + results_path)
+        with open(results_path + '.json', 'w') as outfile:
+            json.dump(predictions, outfile, sort_keys=True, indent=4)
 
     def compute_final_results(self):
         comp = 0
