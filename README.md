@@ -48,7 +48,7 @@ This model was trained on the dataset [ComplexWebQuestions](http://nlp.cs.tau.ac
 7.  Download the data:
 
     ```
-    wget https://www.dropbox.com/s/tn45a3crehht7c1/Data.zip
+    wget https://www.dropbox.com/s/3uinslbj1nf5n5n/Data.zip
     unzip Data.zip
     ```
 8.  Optional - install and run Stanford NLP server, to generate noisy supervision:
