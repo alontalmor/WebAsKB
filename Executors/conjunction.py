@@ -36,8 +36,6 @@ class Conjunction(ExecutorBase):
 
         return question_list
 
-
-
     def proc_webanswer_wave_results(self,split_points,webanswer_dict):
 
         ex_split_points = split_points[split_points['comp'] == 'conjunction']

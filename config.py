@@ -35,7 +35,7 @@ class Config:
         self.teacher_forcing_partial_until = 30000
 
         # used to limit size of dev set when training
-        self.max_evalset_size = 4000
+        self.max_evalset_size = 40000
 
         # Number of training iteration with no substantial dev accuracy improvement to stop training ("early stopping")
         self.NO_IMPROVEMENT_ITERS_TO_STOP = 50000

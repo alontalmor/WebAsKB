@@ -165,12 +165,19 @@ class WebAsKB_PtrNet_Model():
             split_part1 = ''
             split_part2 = ''
 
-        return [{'ID': pairs_dev['aux_data']['ID'], 'comp': comp, 'comp_sup': comp_sup,
-                           'same_comp': int(comp == comp_sup), 'p1': p1, 'p1_sup': p1_sup, 'p2': p2, \
-                           'p2_sup': p2_sup, 'split_part1': split_part1, \
-                           'split_part2': split_part2,
-                           'question': pairs_dev['aux_data']['question'], \
-                           'answers': pairs_dev['aux_data']['answers']}]
+        if config.EVALUATION_SET != 'test':
+            return [{'ID': pairs_dev['aux_data']['ID'], 'comp': comp, 'comp_sup': comp_sup,
+                               'same_comp': int(comp == comp_sup), 'p1': p1, 'p1_sup': p1_sup, 'p2': p2, \
+                               'p2_sup': p2_sup, 'split_part1': split_part1, \
+                               'split_part2': split_part2,
+                               'question': pairs_dev['aux_data']['question'], \
+                               'answers': pairs_dev['aux_data']['answers']}]
+        else:
+            return [{'ID': pairs_dev['aux_data']['ID'], 'comp': comp, 'comp_sup': comp_sup,
+                     'same_comp': int(comp == comp_sup), 'p1': p1, 'p1_sup': p1_sup, 'p2': p2, \
+                     'p2_sup': p2_sup, 'split_part1': split_part1, \
+                     'split_part2': split_part2,
+                     'question': pairs_dev['aux_data']['question']}]
 
     def save_model(self):
         torch.save(self.encoder, config.neural_model_dir + 'encoder.pkl')

@@ -32,6 +32,7 @@ elif args.operation == 'splitqa':
     config.PERFORM_TRAINING = False
     splitqa = SplitQA()
     splitqa.run_executors()
+    splitqa.gen_predictions_file()
     splitqa.compute_final_results()
 else:
     print('option not found, available operations: "gen_noisy_sup","run_ptrnet" ,"train_ptrnet", "splitqa"')

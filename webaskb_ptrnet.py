@@ -102,7 +102,7 @@ class WebAsKB_PtrNet():
     def eval(self):
         model_output = self.net.evaluate()
         with open(config.split_points_dir + config.EVALUATION_SET + '.json', 'w') as outfile:
-            outfile.write(json.dumps(model_output))
+            outfile.write(json.dumps(model_output, sort_keys=True, indent=4))
 
 
 

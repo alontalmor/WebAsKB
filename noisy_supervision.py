@@ -24,9 +24,15 @@ class NoisySupervision():
         print(pd.DataFrame(questions)['compositionality_type'].value_counts())
 
         # aliases version
-        compWebQ = pd.DataFrame([{'ID':question['ID'],'question':question['question'],'webqsp_question':question['webqsp_question'], \
-            'machine_question':question['machine_question'],'comp':question['compositionality_type'], \
-            'answers':[answer['answer'] for answer in question['answers']]} for question in questions])
+        # test set does not contain answers
+        if config.EVALUATION_SET != 'test':
+            compWebQ = pd.DataFrame([{'ID':question['ID'],'question':question['question'],'webqsp_question':question[   'webqsp_question'], \
+                'machine_question':question['machine_question'],'comp':question['compositionality_type'], \
+                'answers':[answer['answer'] for answer in question['answers']]} for question in questions])
+        else:
+            compWebQ = pd.DataFrame(
+                [{'ID': question['ID'], 'question': question['question'], 'webqsp_question': question['webqsp_question'], \
+                  'machine_question': question['machine_question'], 'comp': question['compositionality_type']} for question in questions])
         print(compWebQ['comp'].value_counts())
 
         self.compWebQ = compWebQ.to_dict(orient="rows")
@@ -325,9 +331,15 @@ class NoisySupervision():
                     question['split_part2'] += ' '.join(question['rephrased_tokens'][max_inds[1] + 1:])
                 question['split_part2'] = question['split_part2'].strip()
 
-        out = pd.DataFrame(self.compWebQ[0:num_q_to_proc])[
-            ['ID', 'comp', 'p1', 'p2', 'flip_rephrase', 'split_part1', 'machine_comp_internal', 'split_part2', 'question',
-             'machine_question', 'answers', 'sorted_annotations', 'max_diff']]
+        # test set does not contain answers
+        if config.EVALUATION_SET != 'test':
+            out = pd.DataFrame(self.compWebQ[0:num_q_to_proc])[
+                ['ID', 'comp', 'p1', 'p2', 'flip_rephrase', 'split_part1', 'machine_comp_internal', 'split_part2', 'question',
+                 'machine_question', 'answers', 'sorted_annotations', 'max_diff']]
+        else:
+            out = pd.DataFrame(self.compWebQ[0:num_q_to_proc])[
+                ['ID', 'comp', 'p1', 'p2', 'flip_rephrase', 'split_part1', 'machine_comp_internal', 'split_part2',
+                 'question', 'machine_question', 'sorted_annotations', 'max_diff']]
 
         with open(config.noisy_supervision_dir + config.EVALUATION_SET + '.json', 'w') as outfile:
             json.dump(out.to_dict(orient="rows"), outfile, sort_keys=True, indent=4)
