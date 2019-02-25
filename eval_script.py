@@ -72,7 +72,7 @@ def compute_P1(matched_answers, golden_answer_list, pred_answer):
 def evaluate(dataset_df, predictions):
     # please predict the full file
     if len(dataset_df) != len(predictions):
-        print('predictions file does not match dataset file number of examples')
+        print('predictions file does not match dataset file number of examples!!!')
 
     P1 = 0
     for prediction in predictions:
@@ -89,7 +89,7 @@ def evaluate(dataset_df, predictions):
 
             P1 += curr_P1
 
-    return P1/len(predictions)
+    return P1/len(dataset_df)
 
 if __name__ == '__main__':
     #expected_version = '1.0'
