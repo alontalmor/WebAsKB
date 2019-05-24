@@ -72,11 +72,11 @@ can be downloaded from [ComplexWebQuestions](http://nlp.cs.tau.ac.il/compwebq)
 
 Now you can do any of the following:
 
-* Generate the noisy supervision data for training `python -m webaskb_run.py gen_noisy_sup`.
-* Run a pointer network to generate split points in the question `python -m webaskb_run.py run_ptrnet`.
-* Train the pointer network `python -m webaskb_run.py train_ptrnet`.
-* Create final predication and calculate p@1 scores `python -m webaskb_run.py splitqa`.
-* NEW! Run evaluation script for dev set `python -m eval_script.py Data/complex_web_questions/ComplexWebQuestions_dev.json Data/predictions_dev.json`.
+* Generate the noisy supervision data for training `python -m webaskb_run gen_noisy_sup`.
+* Run a pointer network to generate split points in the question `python -m webaskb_run run_ptrnet`.
+* Train the pointer network `python -m webaskb_run train_ptrnet`.
+* Create final predication and calculate p@1 scores `python -m webaskb_run splitqa`.
+* NEW! Run evaluation script for dev set `python -m eval_script Data/complex_web_questions/ComplexWebQuestions_dev.json Data/predictions_dev.json`.
 
 Options: ‘—eval_set dev’ or ‘—eval_set test’ to choose between the development and test set.
 
