@@ -225,7 +225,7 @@ class WebAsKB_PtrNet_Model():
             result.append(np.argmax(decoder_attention.data[0].tolist()))
 
         if type(loss)!=int:
-            loss_value = loss.data[0] / target_length
+            loss_value = loss.item() / target_length
         else:
             loss_value = 0
         return loss_value , result, loss
